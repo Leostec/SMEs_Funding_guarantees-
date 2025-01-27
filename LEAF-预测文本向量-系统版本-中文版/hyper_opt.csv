@@ -1107,3 +1107,5 @@ Seed,Dataset,Model,HyperOpt params
 0,报告数据,xgb,"{'alpha': '0.0051', 'lambda': '0.1352', 'gamma': '0.4648', 'subsample': '0.8414', 'colsample_bytree': '0.4593', 'max_depth': '4.0000', 'eta': '0.0179', 'scale_pos_weight': '1.0326'}"
 0,报告数据,xgb,"{'alpha': '0.0000', 'lambda': '0.0002', 'gamma': '0.0000', 'subsample': '0.9371', 'colsample_bytree': '0.3029', 'max_depth': '4.0000', 'eta': '0.0559', 'scale_pos_weight': '1.0725'}"
 0,报告数据,xgb,"{'alpha': '0.0087', 'lambda': '0.0008', 'gamma': '0.2631', 'subsample': '0.8637', 'colsample_bytree': '0.3973', 'max_depth': '4.0000', 'eta': '0.0124', 'scale_pos_weight': '1.0227'}"
+0,报告数据,xgb,"{'alpha': '0.0000', 'lambda': '0.0000', 'gamma': '0.0000', 'subsample': '0.7965', 'colsample_bytree': '0.3779', 'max_depth': '4.0000', 'eta': '0.0407', 'scale_pos_weight': '1.0598'}"
+0,报告数据,xgb,"{'alpha': '0.0000', 'lambda': '0.0000', 'gamma': '0.0088', 'subsample': '0.8871', 'colsample_bytree': '0.7149', 'max_depth': '3.0000', 'eta': '0.0939', 'scale_pos_weight': '1.0130'}"

@@ -55,8 +55,8 @@ def model(*args):
     data['文化程度'], data['月末合计'] = data['月末合计'].copy(), data['文化程度'].copy()
 
     # data_frames = [pd.DataFrame(arg) for arg in args]
-    data.to_csv("data.csv", index=False)
-    test_path= "data.csv"
+    data.to_csv("./data.csv", index=False)
+    test_path= "./data.csv"
 
 
     model_m3e = SentenceTransformer('moka-ai/m3e-large')
@@ -101,5 +101,5 @@ def model(*args):
 
 
 
-eel.init(r'/资产评估/LEAF-预测文本向量-系统版本-中文版')
+eel.init('.')
 eel.start('new.html')
