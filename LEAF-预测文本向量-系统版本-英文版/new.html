@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System</title>
+    <h1>SMEs funding guarantee evaluation system</h1>
+
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .lable{
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .area{
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .group-title {
+            position: absolute;
+            font-size: 14px; /* 调整字体大小 */
+            color: #666; /* 设置颜色 */
+            margin-top: -30px; /* 负的 margin-top 将标题上移 */
+        }
+
+        .Enterprise-creditworthiness {
+                border: 1.5px solid #888;
+                padding: 10px;
+                margin-bottom: 15px;
+            }
+
+        .Company-Information {
+            border: 1.5px solid #888;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .Balance-Sheet {
+            border: 1.5px solid #888;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .Income-Statement{
+            border: 1.5px solid #888;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+        .Security-assurance-measures{
+            border: 1.5px solid #888;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+        .Financial-indicators{
+            border: 1.5px solid #888;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+         .Text-message {
+             border: 1.5px solid #888;
+             padding: 12px;
+             margin-bottom: 15px;
+             flex: 1;
+         }
+
+        .input-container {
+            flex: 1;
+            max-height: 150px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 4px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size:14px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size:14px
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        label{
+        font-size: 15px
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: white;
+        }
+
+       #result {
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: center; /* 居中显示 */
+        font-size:20px;
+        color:blue;
+    }
+
+        #Image {
+            display: none;
+            max-width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="row">
+        <div class="row Enterprise-creditworthiness">
+            <h2 class="group-title">Enterprise creditworthiness</h2>
+            <div class="input-container">
+                <label for="monthEndTotal">Month-end total</label>
+                <input type="number" id="monthEndTotal" tag="Month-end total">
+            </div>
+        </div>
+        <div class="row Company-Information">
+            <h2 class="group-title">Company Information</h2>
+            <div class="input-container">
+                <label for="perCapitaWages">Per capita wages</label>
+                <input type="number" id="perCapitaWages" tag="Per capita wages">
+            </div>
+            <div class="input-container">
+                <label for="educationalLevel">Educational level</label>
+                <select id="educationalLevel" tag="Educational level">
+                    <option value="0">Primary School</option>
+                    <option value="1">Junior Secondary School</option>
+                    <option value="1.5">Vocational High School</option>
+                    <option value="2">High School</option>
+                    <option value="2">Technical Secondary School</option>
+                    <option value="3">Specialty</option>
+                    <option value="4">Undergraduate</option>
+                    <option value="5">Master</option>
+                    <option value="6">Doctor</option>
+                    <option value="7">Postdoctor</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row Balance-Sheet">
+        <h2 class="group-title">Balance Sheet</h2>
+        <div class="area">
+            <div class="input-container">
+                <label for="Monetary funds">Monetary funds</label>
+                <input type="number" id="Monetary funds" tag="Monetary funds">
+            </div>
+            <div class="input-container">
+                <label for="Accounts receivable notes">Accounts receivable notes</label>
+                <input type="number" id="Accounts receivable notes" tag="Accounts receivable notes">
+            </div>
+            <div class="input-container">
+                <label for="Inventories">Inventories</label>
+                <input type="number" id="Inventories" tag="Inventories">
+            </div>
+            <div class="input-container">
+                <label for="Fixed assets">Fixed assets</label>
+                <input type="number" id="Fixed assets" tag="Fixed assets">
+            </div>
+            <div class="input-container">
+                <label for="Total assets">Total assets</label>
+                <input type="number" id="Total assets" tag="Total assets">
+            </div>
+        </div>
+        <div class="area">
+            <div class="input-container">
+                <label for="Corporate Borrowing">Corporate Borrowing</label>
+                <input type="number" id="Corporate Borrowing" tag="Corporate Borrowing">
+            </div>
+            <div class="input-container">
+                <label for="Accounts payable notes">Accounts payable notes</label>
+                <input type="number" id="Accounts payable notes" tag="Accounts payable notes">
+            </div>
+            <div class="input-container">
+                <label for="Current tax liabilities">Current tax liabilities</label>
+                <input type="number" id="Current tax liabilities" tag="Current tax liabilities">
+            </div>
+            <div class="input-container">
+                <label for="Paid-up capital">Paid-up capital</label>
+                <input type="number" id="Paid-up capital" tag="Paid-up capital">
+            </div>
+            <div class="input-container">
+                <label for="Liabilities and equity">Liabilities and equity</label>
+                <input type="number" id="Liabilities and equity" tag="Liabilities and equity">
+            </div>
+        </div>
+        <div class="area">
+            <div class="input-container">
+                <label for="Accounts receivable">Accounts receivable</label>
+                <input type="number" id="Accounts receivable" tag="Accounts receivable">
+            </div>
+            <div class="input-container">
+                <label for="Prepaid receivable">Prepaid receivable</label>
+                <input type="number" id="Prepaid receivable" tag="Prepaid receivable">
+            </div>
+            <div class="input-container">
+                <label for="Accounts payable">Accounts payable</label>
+                <input type="number" id="Accounts payable" tag="Accounts payable">
+            </div>
+        </div>
+    </div>
+    <div class="row Income-Statement">
+        <h2 class="group-title">Income Statement</h2>
+        <div class="area">
+            <div class="input-container">
+                <label for="Revenue">Revenue</label>
+                <input type="number" id="Revenue" tag="Revenue">
+            </div>
+            <div class="input-container">
+                <label for="Taxation on costs">Taxation on costs</label>
+                <input type="number" id="Taxation on costs" tag="Taxation on costs">
+            </div>
+            <div class="input-container">
+                <label for="Period expense">Period expense</label>
+                <input type="number" id="Period expense" tag="Period expense">
+            </div>
+            <div class="input-container">
+                <label for="Net foreign receipts">Net foreign receipts</label>
+                <input type="number" id="Net foreign receipts" tag="Net foreign receipts">
+            </div>
+            <div class="input-container">
+                <label for="Income tax">Income tax</label>
+                <input type="number" id="Income tax" tag="Income tax">
+            </div>
+        </div>
+        <div class="area">
+            <div class="input-container">
+                <label for="Net profit">Net profit</label>
+                <input type="number" id="Net profit" tag="Net profit">
+            </div>
+            <div class="input-container">
+                <label for="Gross profit">Gross profit</label>
+                <input type="number" id="Gross profit" tag="Gross profit">
+            </div>
+            <div class="input-container">
+                <label for="Net profit margin">Net profit margin</label>
+                <input type="number" id="Net profit margin" tag="Net profit margin">
+            </div>
+        </div>
+    </div>
+    <div class="row Security-assurance-measures">
+        <h2 class="group-title">Security assurance measures</h2>
+        <div class="area">
+            <div class="input-container">
+                <label for="Personal guarantee">Personal guarantee</label>
+                <select id="Personal guarantee" tag="Personal guarantee">
+                    <option value="0">no</option>
+                    <option value="1">yes</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <label for="Corporate guarantee">Corporate guarantee</label>
+                <select id="Corporate guarantee" tag="Corporate guarantee">
+                    <option value="0">no</option>
+                    <option value="1">yes</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <label for="Real estate mortgage">Real estate mortgage</label>
+                <select id="Real estate mortgage" tag="Real estate mortgage">
+                    <option value="0">no</option>
+                    <option value="1">yes</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <label for="Intellectual Property Pledge">Intellectual Property Pledge</label>
+                <select id="Intellectual Property Pledge" tag="Intellectual Property Pledge">
+                    <option value="0">no</option>
+                    <option value="1">yes</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <label for="Pledge of accounts receivable">Pledge of accounts receivable</label>
+                <select id="Pledge of accounts receivable" tag="Pledge of accounts receivable">
+                    <option value="0">no</option>
+                    <option value="1">yes</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row Financial-indicators">
+        <h2 class="group-title">Financial indicators</h2>
+        <div class="area">
+            <div class="input-container">
+                <label for="Working capital">Working capital</label>
+                <input type="number" id="Working capital" tag="Working capital">
+            </div>
+            <div class="input-container">
+                <label for="Net assets">Net assets</label>
+                <input type="number" id="Net assets" tag="Net assets">
+            </div>
+            <div class="input-container">
+                <label for="Asset-liability ratio">Asset-liability ratio</label>
+                <input type="number" id="Asset-liability ratio" tag="Asset-liability ratio">
+            </div>
+            <div class="input-container">
+                <label for="Current ratio">Current ratio</label>
+                <input type="number" id="Current ratio" tag="Current ratio">
+            </div>
+            <div class="input-container">
+                <label for="Quick ratio">Quick ratio</label>
+                <input type="number" id="Quick ratio" tag="Quick ratio">
+            </div>
+        </div>
+        <div class="area">
+            <div class="input-container">
+                <label for="Long-term assets adequacy ratio">Long-term assets adequacy ratio</label>
+                <input type="number" id="Long-term assets adequacy ratio" tag="Long-term assets adequacy ratio">
+            </div>
+            <div class="input-container">
+                <label for="Debt-to-Equity ratio">Debt-to-Equity ratio</label>
+                <input type="number" id="Debt-to-Equity ratio" tag="Debt-to-Equity ratio">
+            </div>
+            <div class="input-container">
+                <label for="Annual operating income">Annual operating income</label>
+                <input type="number" id="Annual operating income" tag="Annual operating income">
+            </div>
+            <div class="input-container">
+                <label for="Sales profit margin">Sales profit margin</label>
+                <input type="number" id="Sales profit margin" tag="Sales profit margin">
+            </div>
+            <div class="input-container">
+                <label for="Return on Equity">Return on Equity</label>
+                <input type="number" id="Return on Equity" tag="Return on Equity">
+            </div>
+        </div>
+        <div class="area">
+            <div class="input-container">
+                <label for="Interest coverage ratio">Interest coverage ratio</label>
+                <input type="number" id="Interest coverage ratio" tag="Interest coverage ratio">
+            </div>
+            <div class="input-container">
+                <label for="Net asset growth rate">Net asset growth rate</label>
+                <input type="number" id="Net asset growth rate" tag="Net asset growth rate">
+            </div>
+            <div class="input-container">
+                <label for="Sales revenue Growth rate">Sales revenue Growth rate</label>
+                <input type="number" id="Sales revenue Growth rate" tag="Sales revenue Growth rate">
+            </div>
+            <div class="input-container">
+                <label for="Profit Growth rate">Profit Growth rate</label>
+                <input type="number" id="Profit Growth rate" tag="Profit Growth rate">
+            </div>
+            <div class="input-container">
+                <label for="Profit growth amount">Profit growth amount</label>
+                <input type="number" id="Profit growth amount" tag="Profit growth amount">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row Text-message">
+        <h2 class="group-title">Text message</h2>
+        <div class="area">
+            <div class="input-container">
+                <label for="Prospects for technological development">Prospects for technological development</label>
+                <input type="text" id="Prospects for technological development" tag="Prospects for technological development">
+            </div>
+        </div>
+
+        <div class="area">
+            <div class="input-container">
+                <label for="Enterprise development strategy">Enterprise development strategy</label>
+                <input type="text" id="Enterprise development strategy" tag="Enterprise development strategy">
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="lable">
+        <label for="section">Section:</label>
+        <select id="section" name="section">
+            <option value="[0,300w],(300w,39000w]">[0,300w],(300w,39000w]</option>
+            <option value="[0,400w],(400w,39000w]">[0,400w],(400w,39000w]</option>
+            <option value="[0,200w],(200w,300w]">[0,200w],(200w,300w]</option>
+            <option value="(300w,500w),[500w,39000w]">(300w,500w),[500w,39000w]</option>
+            <option value="[0,200w],(200w,400w)">[0,200w],(200w,400w)</option>
+            <option value="[400w,500w],(500w,39000w]">[400w,500w],(500w,39000w]</option>
+        </select>
+
+        <label for="method">Method:</label>
+        <select id="method" name="method">
+            <option value="predict">Predict</option>
+            <option value="fit">Fit</option>
+        </select>
+
+        <label for="model">Model:</label>
+        <select id="model" name="model">
+            <option value="xgb">XGBoost</option>
+            <option value="random_forest">Random_Forest</option>
+            <option value="lgbm">LightGBM</option>
+        </select>
+
+
+        <br><br>
+        <button onclick="test()">Submit</button>
+    </div>
+
+    <table id="result"></table>
+    <div id="ImageContainer">
+        <img id="Image" src="try_img.png" alt="plot">
+    </div>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript">
+
+        function createTable() {
+            // 创建标题元素
+            var tableTitle = document.createElement('h2');
+            tableTitle.textContent = "Input Data";
+            tableTitle.style.textAlign = 'center'; // 居中显示
+
+            // 创建表格元素
+            var table = document.createElement('table');
+            table.style.width = '100%'; // 设置表格宽度
+            table.style.height = '25%';
+            table.style.margin = '0 auto'; // 居中显示
+            table.setAttribute('border', '1');
+
+            // 创建表头行
+            var headerRow = table.insertRow();
+            var headerCell1 = headerRow.insertCell();
+            var headerCell2 = headerRow.insertCell();
+            var headerCell3 = headerRow.insertCell();
+            var headerCell4 = headerRow.insertCell();
+            var headerCell5 = headerRow.insertCell();
+            var headerCell6 = headerRow.insertCell();
+            var headerCell7 = headerRow.insertCell();
+            var headerCell8 = headerRow.insertCell();
+            var headerCell9 = headerRow.insertCell();
+            var headerCell10 = headerRow.insertCell();
+            headerCell1.innerHTML = "<b>Tag</b>";
+            headerCell2.innerHTML = "<b>Value</b>";
+            headerCell3.innerHTML = "<b>Tag</b>";
+            headerCell4.innerHTML = "<b>Value</b>";
+            headerCell5.innerHTML = "<b>Tag</b>";
+            headerCell6.innerHTML = "<b>Value</b>";
+            headerCell7.innerHTML = "<b>Tag</b>";
+            headerCell8.innerHTML = "<b>Value</b>";
+            headerCell9.innerHTML = "<b>Tag</b>";
+            headerCell10.innerHTML = "<b>Value</b>";
+
+            // 创建数据行
+            var inputs = document.querySelectorAll('.input-container select, .input-container input');
+            var row;
+            for (var i = 0; i < inputs.length; i++) {
+                if (i % 5 === 0) {
+                    row = table.insertRow();
+                }
+                var input = inputs[i];
+                var cell1 = row.insertCell();
+                var cell2 = row.insertCell();
+                cell1.innerHTML = input.getAttribute('tag');
+                cell2.innerHTML = input.value;
+            }
+
+            // 将标题和表格添加到body中
+            document.body.appendChild(tableTitle);
+            document.body.appendChild(table);
+        }
+
+
+
+        function showImage() {
+            var imageContainer = document.getElementById("ImageContainer");
+
+            // 创建标题元素
+            var title = document.createElement("h2");
+            title.textContent = "SHAP Force Plot";
+            title.style.textAlign = 'center'; // 居中显示
+
+            // 创建 iframe 元素
+            var iframe = document.createElement("iframe");
+            iframe.src = "force_plot.html";
+            iframe.width = "1250";
+            iframe.height = "170";
+            iframe.style.border = "none";  // Optional: Hide the iframe border
+
+            // 将标题和 iframe 添加到图片容器中
+            imageContainer.appendChild(title);
+            imageContainer.appendChild(iframe);
+        }
+
+        var methodSelect = document.getElementById("method");
+        var method = methodSelect.value;
+        methodSelect.addEventListener("change", function () { method = methodSelect.value; });
+
+        var sectionSelect = document.getElementById("section");
+        var section = sectionSelect.value;
+        sectionSelect.addEventListener("change", function () { section = sectionSelect.value; });
+
+        var modelSelect = document.getElementById("model");
+        var model = modelSelect.value;
+        modelSelect.addEventListener("change", function () { model = modelSelect.value; });
+
+        var prospectsSelect = document.getElementById("Prospects for technological development");
+        var prospects = prospectsSelect.value;
+        prospectsSelect.addEventListener("change", function () { prospects = prospectsSelect.value; });
+
+        var strategySelect = document.getElementById("Enterprise development strategy");
+        var strategy = strategySelect.value;
+        strategySelect.addEventListener("change", function () { strategy = strategySelect.value; });
+
+
+        async function test() {
+            await eel.save_method(method);
+            await eel.save_section(section);
+            await eel.save_model(model);
+            await eel.save_prospects(prospects);
+            await eel.save_strategy(strategy);
+            createTable();
+
+            const inputs = document.querySelectorAll('.input-container select, .input-container input');
+            const values = Array.from(inputs).map(input => {
+                if (input.tagName.toLowerCase() === "select") {
+                    return input.options[input.selectedIndex].value;
+                } else {
+                    return input.value;
+                }
+            });
+
+            const result = await eel.model(values)();
+
+            // 创建结果容器
+            const resultContainer = document.createElement("div");
+            resultContainer.id = "result";
+
+            // 添加标题
+            const title = document.createElement("h2");
+            title.textContent = "Model Result";
+            title.style.textAlign = 'center'; // 居中显示
+            resultContainer.appendChild(title);
+
+            // 将结果添加到容器中
+            resultContainer.innerHTML = '<h2>Result</h2>' + result;
+
+
+            // 将结果容器添加到页面的body部分
+            document.body.append(resultContainer);
+            showImage("force_plot.html");
+
+        };
+
+
+    </script>
+</body>
+
+</html>
