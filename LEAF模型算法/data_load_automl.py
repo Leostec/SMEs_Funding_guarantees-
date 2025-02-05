@@ -22,8 +22,8 @@ def datasets_to_X_y(ds_path):
             X_oh - 经过独热编码后的数据集特征
     """
     ds_name = '报告数据'  #提取数据集名称
-    df = pd.read_csv('D:/研究生/资产评估/提取要素/报告数据汇总.csv')  #读取数据集
-    # df = df.drop(columns=["报告编号"])
+    df = pd.read_csv('/Users/leo/研究生/资产评估/第二篇-基于大语言模型的评估系统/实验文件/300大类编号版.csv')  #读取数据集
+    df = df.drop(columns=["报告编号"])
     # df = label_encode_class(df)  #标签换成二分类
     y = df.iloc[:,0]
     X = df.iloc[:,1:]

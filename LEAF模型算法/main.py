@@ -15,7 +15,7 @@ from SFAXGBoostClassifier import SFAXGBoostClassifier
 # 特别是在机器学习和数据分析中，可以用来保存训练好的模型、数据集、配置信息等。
 
 # 数据路径和文件名的常量
-BINARY_DATA_PATH = 'D:/研究生/资产评估/提取要素'
+BINARY_DATA_PATH = '/Users/leo/研究生/资产评估'
 PICKLE_PATH = './pickle'
 BINARY_PICKLE_PATH = PICKLE_PATH + '/binary'
 PICKLE_ALL_BINARY_DATASETS_PATH = PICKLE_PATH + '/binary_datasets_idx.pkl'
@@ -103,17 +103,21 @@ def params_dict(best_trial_params):
         params[key] = '{:.4f}'.format(value)
     return params
 
+# 定义一个包含20个随机种子的列表
+seed_list = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset_id', default='5', type=str)
-    parser.add_argument('--task', default='binary', type=str)
-    parser.add_argument('--model_name', default='xgb', type=str)
-    parser.add_argument('--seed', default=0, type=int)
-    parser.add_argument('--compare', default=False, type=bool)
-    all_args = parser.parse_args()
+# 循环读取并使用列表中的每个种子
+for i, seed in enumerate(seed_list):
+    if __name__ == '__main__':
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--dataset_id', default='5', type=str)
+        parser.add_argument('--task', default='binary', type=str)
+        parser.add_argument('--model_name', default='xgb', type=str)
+        parser.add_argument('--seed', default=seed, type=int)
+        parser.add_argument('--compare', default=False, type=bool)
+        all_args = parser.parse_args()
 
-    main(all_args)
+        main(all_args)
 
 
 

@@ -173,7 +173,7 @@ class SFAClassifier:
         X_train_ex_p = X_train.join(train_df_preds)  # p
 
         # Train 3 second-stage models 在这三种增强特征上训练第二阶段的模型
-        key_list=self.train_second_stage(X_train,y_train,'base',44)
+        key_list=self.train_second_stage(X_train,y_train,'base',30)
         self.train_second_stage(X_train_ex_p, y_train, 'p',0)
         key_list_lime = self.train_second_stage(X_train_ex_lime, y_train, 'lime',10)
         self.train_second_stage(X_train_ex_p_lime, y_train, 'p_lime',0)
@@ -287,7 +287,7 @@ class SFAClassifier:
                 #         val_lime_vals[x, idx] = explanation.local_exp[1][j][1]  # 存储每个样本的特征贡献值
                 # N=N+len(val_ind)
                 # lime值提取法三---splime
-                sp_obj = submodular_pick.SubmodularPick(explainer, X_val.values, predict_fn,method='full', num_features=len(X_val))
+                sp_obj = submodular_pick.SubmodularPick(explainer, X_val.values, predict_fn,method='full', num_features=X_val.shape[1])
                 for i, exp in enumerate(sp_obj.explanations):
                     # l = exp.as_list()
                     i = i + N
@@ -326,7 +326,7 @@ class SFAClassifier:
                     p0 = 1 - preds
                     return np.hstack((p0, preds))
                 # lime值提取法三---splime
-                sp_obj = submodular_pick.SubmodularPick(explainer, X_val.values, predict_fn,method='full', num_features=len(X_val))
+                sp_obj = submodular_pick.SubmodularPick(explainer, X_val.values, predict_fn,method='full', num_features=X_val.shape[1])
                 for i, exp in enumerate(sp_obj.explanations):
                     # l = exp.as_list()
                     i = i + N
@@ -373,8 +373,8 @@ class SFAClassifier:
             train_score = float('{:.4f}'.format(log_loss(y_train_np, preds)))
         print((f'train meta score- {config}', str(train_score)))
         if self.model_name in ['xgb', 'random_forest']:
-            imp = clf.get_fscore()
-            if 'shap' in imp:
+            imp = clf.get_score(importance_type='gain')
+            if config == 'lime':
                 imp_10 = {key:imp[key] for key in imp if 'shap' in key}
                 imp = sorted(imp_10.items(),key = lambda x:x[1],reverse=True)[:i]
                 key_list = [item[0] for item in imp]
@@ -390,7 +390,7 @@ class SFAClassifier:
             # 转化为字典
             imp = {feature: importance for feature, importance in
                                        zip(feature_names, imp)}
-            if 'shap' in imp:
+            if config == 'lime':
                 imp_10 = {key:imp[key] for key in imp if 'shap' in key}
                 imp = sorted(imp_10.items(),key = lambda x:x[1],reverse=True)[:i]
                 key_list = [item[0] for item in imp]
@@ -494,7 +494,7 @@ class SFAClassifier:
                 #         idx = explanation.local_exp[1][j][0]
                 #         test_lime_vals[i,x, idx] = explanation.local_exp[1][j][1]  # 存储每个样本的特征贡献值
                 # lime值提取法三---splime
-                sp_obj = submodular_pick.SubmodularPick(explainer, X_test.values, predict_fn,method='full', num_features=len(X_test))
+                sp_obj = submodular_pick.SubmodularPick(explainer, X_test.values, predict_fn,method='full', num_features=X_test.shape[1])
                 for n, exp in enumerate(sp_obj.explanations):
                     # l = exp.as_list()
                     for j in range(X_test.shape[1]):
@@ -523,7 +523,7 @@ class SFAClassifier:
                     p0 = 1 - preds
                     return np.hstack((p0, preds))
                 # lime值提取法三---splime
-                sp_obj = submodular_pick.SubmodularPick(explainer, X_test.values, predict_fn,method='full', num_features=len(X_test))
+                sp_obj = submodular_pick.SubmodularPick(explainer, X_test.values, predict_fn,method='full', num_features=X_test.shape[1])
                 for n, exp in enumerate(sp_obj.explanations):
                     # l = exp.as_list()
                     for j in range(X_test.shape[1]):
