@@ -175,7 +175,7 @@ class SFAClassifier:
         # Train 3 second-stage models 在这三种增强特征上训练第二阶段的模型
         key_list=self.train_second_stage(X_train,y_train,'base',30)
         self.train_second_stage(X_train_ex_p, y_train, 'p',0)
-        key_list_lime = self.train_second_stage(X_train_ex_lime, y_train, 'lime',10)
+        key_list_lime = self.train_second_stage(X_train_ex_lime, y_train, 'lime',5)
         self.train_second_stage(X_train_ex_p_lime, y_train, 'p_lime',0)
         # self.train_second_stage(train_df_lime,y_train,'onlylime')
 

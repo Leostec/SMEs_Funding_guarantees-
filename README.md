@@ -1,33 +1,34 @@
 ## README
 
-​	该分支存储LEAF模型（基于LIME的特征增强）和SFA模型（基于SHAP的特征增强）和基于该模型的初代系统，该初代系统是通过eel进行前后端交互的。
+[中文文档](./README-zh.md)
 
-​	共存储三个版本：系统1--LEAF初代系统中文本（接入文本向量）、系统2--LEAF初代系统英文版（接入文本向量）、LEAF模型算法、LEAF模型算法（接入文本向量）、SFA模型算法（接入文本向量）
+This branch stores the LEAF model (LIME-based feature enhancement) and the SFA model (SHAP-based feature enhancement), along with the initial system based on these models. This initial system uses `eel` for front-end and back-end interaction.
 
-#### 1）系统1-- LEAF初代系统中文版（接入文本向量）：[LEAF-预测文本向量-系统版本-中文版]
+A total of three versions are stored: System 1—LEAF initial system Chinese version (with text vector integration), System 2—LEAF initial system English version (with text vector integration), LEAF model algorithm, LEAF model algorithm (with text vector integration), and SFA model algorithm (with text vector integration).
+
+#### 1) System 1—LEAF Initial System Chinese Version (with Text Vector Integration): [LEAF-Predictive Text Vector-System Version-Chinese]
 
 ![image-20250127163119489](./image/image-20250127163119489.png)
 
-
-
-#### 2）系统2-- LEAF初代系统英文版（接入文本向量）：[LEAF-预测文本向量-系统版本-英文版]
+#### 2) System 2—LEAF Initial System English Version (with Text Vector Integration): [LEAF-Predictive Text Vector-System Version-English]
 
 ![image-20250127165211843](./image/image-20250127165211843.png)
 
-#### 3）LEAF模型算法：[LEAF模型算法]
+#### 3) LEAF Model Algorithm: [LEAF Model Algorithm]
 
-​	为了有效扩充已有特征，本算法采用LIME生成了一个新的特征集，即增强特征集(augmented feature set, AFS)。同时，为了充分利用原始数据的预测结果，我们使用初始特征集(original feature set, OFS)训练了一个模型，并得到了相应的预测结果，即out-of-fold (OOF)预测概率。接下来，我们针对OFS和AFS分别训练了两个第二阶段模型，并通过特征筛选得到了经过筛选后的样本数据base'和经过筛选后的LIME数据LIME'。然后，我们分别构建了经过特征筛选后的数据集，即改进的原始特征集(OFS')和改进的增强特征集(AFS')。最后，我们将OFS'和AFS'合并，构建了最终特征集(final feature set, FFS)，并训练了第三阶段模型。在预测阶段，我们将第一阶段模型的输出和第三阶段模型的输出进行平均集成，以提升泛化能力，并得到最终的预测结果。
+To effectively expand the existing features, this algorithm uses LIME to generate a new feature set, namely the Augmented Feature Set (AFS). Meanwhile, to fully leverage the prediction results of the original data, we trained a model using the Original Feature Set (OFS) and obtained the corresponding prediction results, i.e., out-of-fold (OOF) prediction probabilities. Next, we trained two second-stage models for OFS and AFS separately and performed feature selection to obtain the filtered sample data `base'` and filtered LIME data `LIME'`. Then, we constructed the improved datasets after feature selection, namely the Improved Original Feature Set (OFS') and the Improved Augmented Feature Set (AFS'). Finally, we combined OFS' and AFS' to build the Final Feature Set (FFS) and trained a third-stage model. In the prediction phase, we averaged the outputs of the first-stage model and the third-stage model to improve generalization ability and obtain the final prediction results.
 
 ![image-20250127171256240](./image/image-20250127171256240.png)
 
-#### 4）LEAF模型算法（接入文本向量）：[LEAF-预测文本向量]
+#### 4) LEAF Model Algorithm (with Text Vector Integration): [LEAF-Predictive Text Vector]
 
-#### 5）LEAF模型算法-不含P（预测概率）：[SFA-text-lime-只有lime没有p]
+#### 5) LEAF Model Algorithm—Without P (Prediction Probability): [SFA-text-lime-Only LIME Without P]
 
-#### 6）SFA模型算法：[SFA-text-shap]
+#### 6) SFA Model Algorithm: [SFA-text-shap]
 
- 	将LIME换成SHAP，利用SHAPley value作为特征增强，并接入文本向量作为补充。
+Replace LIME with SHAP, using SHAPley values for feature enhancement, and integrate text vectors as a supplement.
 
 ![image-20250127171512503](./image/image-20250127171512503.png)
 
-#### 7）SFA模型算法（接入文本向量）：[SFA-text-shap-接文本向量]
+#### 7) SFA Model Algorithm (with Text Vector Integration): [SFA-text-shap-with Text Vector]
+
